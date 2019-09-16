@@ -15,6 +15,12 @@ class TestSearch(unittest.TestCase):
 
     def test_if_exists(self):
         self.assertEqual(bf_search("you", self.graph), True)
+        self.assertEqual(bf_search("claire", self.graph), True)
+
+    def test_if_not_exists(self):
+        self.assertEqual(bf_search("peggy", self.graph), False)
+        self.assertEqual(bf_search("alice", self.graph), False)
+        self.assertEqual(bf_search("bob", self.graph), False)
 
 
 def is_the_shining(name):
@@ -22,6 +28,12 @@ def is_the_shining(name):
 
 
 def bf_search(name, graph):
+    """
+    Breadth first search
+    :param name:  name of starting vertice
+    :param graph: graph, where to do search
+    :return:      True if we can get from name to 'johnny' else False
+    """
     search_queue = deque()
     search_queue += graph[name]
     searched = list()
@@ -40,4 +52,3 @@ def bf_search(name, graph):
 
 if __name__ == '__main__':
     unittest.main()
-
